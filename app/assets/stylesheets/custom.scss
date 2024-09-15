@@ -18,13 +18,16 @@ body{
     background-position-x: right;
 }
 
-// .images-section {
-//     background-image: url(home-phone-bg.jpg);
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     max-width: 100%;
-//     max-height: 100%;
-// }
+.images-section {
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-width: 120%;
+    max-height: 120%;
+}
+
+.card{
+    width: 23rem;
+}
 
 .card-img-top {
     max-width: 50%;
@@ -47,3 +50,12 @@ body{
     width: 50px !important;
     height: auto !important;
 }
+
+.notice {
+    color: green;
+  }
+  
+.alert {
+    color: red;
+  }
+  
