@@ -1,0 +1,22 @@
+<div id="<%= dom_id post %>">
+
+  <div class="card" style="width: 27rem;">
+    <div class="card-header bg-white">
+      <% if post.user.profile_photo.attached? %>
+        <%= image_tag post.user.profile_photo, class: "img-thumbnail rounded-circle", style: "width: 10%" %>
+      <% else %>
+        <%= image_tag 'user_profile_picture.png', class: "img-thumbnail rounded-circle", style: "width: 10%" %>
+      <% end %>
+      
+      <span class = "fw-bold mx-2"><%= post.user.username %></span>
+    </div>
+    <%= image_tag post.images.last, clasa: "card-image-top" %>
+    <div class="card-body">
+      <p class="card-text"><%= post.caption %></p>
+    </div>
+    <div class="card-footer">
+      Featured
+    </div>
+  </div>
+</div>
+
