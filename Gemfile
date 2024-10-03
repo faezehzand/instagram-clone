@@ -36,6 +36,7 @@ gem "bootsnap", require: false
 gem "bootstrap", "~> 5.3.0"
 gem "sassc-rails"
 gem "devise"
+gem "font-awesome-sass", "~> 6.1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
