@@ -58,4 +58,8 @@ body{
 .alert {
     color: red;
   }
+
+.card::-webkit-scrollbar{
+    width: 0;
+}
   
