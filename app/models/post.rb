@@ -6,6 +6,10 @@ class Post < ApplicationRecord
   validates :images, presence: true
   validate :acceptable_image
 
+  has_many :likes
+  has_many :likers, through: :likes, source: :user
+
+
   private
 
   # Custom validation for image file type
