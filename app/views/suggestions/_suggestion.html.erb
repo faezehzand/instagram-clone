@@ -2,7 +2,7 @@
     <div class='d-flex flex-row mx-1'>
         <%= image_tag 'user_profile_picture.png', class: "img-thumbnail rounded-circle", style: "width: 2.5rem", alt: "User profile picture" %>
         <div class='d-flex flex-column mx-3'>
-            <small class='fw-bold' style='overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 10rem'><%= user.username %></small>
+            <small class='fw-bold' style='overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 10rem'><%= current_user.username %></small>
             <small class='text-muted' style='font-size: .6rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 10rem'>Suggested for you</small>
         </div>
     </div>

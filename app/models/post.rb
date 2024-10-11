@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :likers, through: :likes, source: :user
 
-
+  has_many :comments
   private
 
   # Custom validation for image file type
