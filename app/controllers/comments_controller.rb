@@ -1,5 +1,9 @@
+# Controller for handling comment-related actions such as creation and deletion of comments on posts.
 class CommentsController < ApplicationController
   before_action :set_post, only: [ :create ]
+
+  # Creates a new comment on a specific post associated with the current user.
+  # Renders the updated comments section via Turbo Streams, or redirects to the post page.
   def create
     @comment = @post.comments.create(user: current_user, body: params[:comment_body])
 
@@ -15,7 +19,8 @@ class CommentsController < ApplicationController
     end
   end
 
-
+  # Deletes a comment if it belongs to the current user.
+  # Renders a Turbo Stream to remove the comment from the page, or redirects to the post page with a success notice.
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.user == current_user
@@ -33,6 +38,9 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  # Sets the post based on post_id provided in the params.
+  # This is used only for creating a new comment on a post.
   def set_post
     @post = Post.find(params[:post_id])
   end

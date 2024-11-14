@@ -1,6 +1,6 @@
 <!-- app/views/posts/_modal.html.erb -->
-<div class="modal fade modal-lg"  id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" >
+<div class="modal fade modal-lg" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <%= form_with(model: post, local: true) do |form| %>
       <div class="modal-content">
         <div class="modal-header">
@@ -10,23 +10,22 @@
         <div class="modal-body d-flex">
           <div class='border-end border-secondary mx-2' style='width:60%'>
             <div>
-              <%= form.file_field :images , multiple: true, id:'post-images' , required: 'true' %>
+              <%= form.file_field :images, multiple: true, id: 'post-images', required: 'true' %> <!-- Allows users to upload multiple images -->
             </div>
           </div>
           <div class='width:40%'>
-            <% if post.errors.any? %>
+            <% if post.errors.any? %> <!-- Displays validation errors if there are any -->
               <div style="color: red">
                 <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
                 <ul>
                   <% post.errors.each do |error| %>
-                    <li><%= error.full_message %></li>
+                    <li><%= error.full_message %></li> <!-- Lists all error messages -->
                   <% end %>
                 </ul>
               </div>
             <% end %>
 
-            <div class='my-2'>
+            <div class='my-2'> <!-- User's profile photo and username -->
               <% if current_user.profile_photo.attached? %>
                 <%= image_tag current_user.profile_photo, class: "img-thumbnail rounded-circle", style: "width: 10%" %>
               <% else %>
@@ -35,43 +34,38 @@
               <span class="fw-bold mx-2"><%= current_user.username %></span>
             </div>
 
-
             <div>
-              <%= form.text_area :caption, rows:8 , placeholder: "Write a caption...",class: "form-control border-0", style:'resize:none' %>
+              <%= form.text_area :caption, rows: 8, placeholder: "Write a caption...", class: "form-control border-0", style: 'resize:none' %> <!-- Text area for the caption -->
             </div>
 
             <div>
-              <%= form.text_field :location, placeholder: 'Add location', class:'form-control' %>
+              <%= form.text_field :location, placeholder: 'Add location', class: 'form-control' %> <!-- Text field for location -->
             </div>
-            <div class='d-flex justify-content-between align-items-center border form-control my-2' data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
-              <a class="text-dark " style='text-decoration:none' >
+            
+            <div class='d-flex justify-content-between align-items-center border form-control my-2' data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <a class="text-dark" style='text-decoration:none'>
                 Advanced Settings
               </a>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
-            <div class="collapse" id="collapseExample">
+            <div class="collapse" id="collapseExample"> <!-- Collapsible advanced settings -->
               <div class="card card-body">
                 <div class="form-check form-switch">
-                  <%= form.check_box :allow_comments, class:"form-check-input",role:'switch',checked:true %>
-                  <%= form.label :allow_comments, style: "display: block", class:"form-check-label" %>
+                  <%= form.check_box :allow_comments, class: "form-check-input", role: 'switch', checked: true %>
+                  <%= form.label :allow_comments, style: "display: block", class: "form-check-label" %> <!-- Checkbox to allow comments -->
                 </div>
 
                 <div class="form-check form-switch">
-                  <%= form.check_box :show_likes_count, class:"form-check-input",role:'switch' ,checked:true%>
-                  <%= form.label :show_likes_count, style: "display: block", class:"form-check-label" %>
+                  <%= form.check_box :show_likes_count, class: "form-check-input", role: 'switch', checked: true %>
+                  <%= form.label :show_likes_count, style: "display: block", class: "form-check-label" %> <!-- Checkbox to show likes count -->
                 </div>
               </div>
             </div>
-
-            
-
           </div>
-            
         </div>
         <div class="modal-footer">
-          <%= form.submit 'Post', class: 'btn btn-primary' %>
+          <%= form.submit 'Post', class: 'btn btn-primary' %> <!-- Submit button for the form -->
         </div>
-        
       <% end %>
     </div>
   </div>

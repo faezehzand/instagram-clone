@@ -1,25 +1,33 @@
+# Controller for managing CRUD operations on posts, allowing users to create, view, edit, update, and delete their posts.
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
+  # Redirects to the root path as posts index is not directly accessible.
   def index
     redirect_to root_path
   end
 
   # GET /posts/1 or /posts/1.json
+  # Displays a specific post.
   def show
   end
 
   # GET /posts/new
+  # Initializes a new Post object for form display.
   def new
     @post = Post.new
   end
 
   # GET /posts/1/edit
+  # Retrieves the post for editing if it belongs to the current user.
   def edit
   end
 
   # POST /posts or /posts.json
+  # Creates a new post associated with the current user.
+  # On success, redirects to the post’s show page or returns JSON response;
+  # on failure, redirects to the root with an alert or returns error JSON.
   def create
     @post = current_user.posts.build(post_params)
 
@@ -35,6 +43,8 @@ class PostsController < ApplicationController
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
+  # Updates an existing post's attributes. On success, redirects to the post or returns JSON response.
+  # On failure, re-renders edit form or returns error JSON.
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -48,6 +58,8 @@ class PostsController < ApplicationController
   end
 
   # DELETE /posts/1 or /posts/1.json
+  # Deletes the post if it belongs to the current user.
+  # On success, redirects to posts list or returns a no-content JSON response.
   def destroy
     return if current_user != @post.user
     @post.destroy!
@@ -59,12 +71,13 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    # Sets @post instance variable for actions that require a specific post.
     def set_post
       @post = Post.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Strong parameters for permitted post attributes.
     def post_params
       params.require(:post).permit(:caption, :longitude, :latitude, :user_id, :allow_comments, :show_likes_count, images: [])
     end

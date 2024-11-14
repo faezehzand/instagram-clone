@@ -1,9 +1,9 @@
 <div class='d-flex flex-row justify-content-between'>
     <div class='d-flex flex-row mx-1'>
-        <%= image_tag(liker.profile_photo.attached? ? liker.profile_photo : 'user_profile_picture.png',  class: "img-thumbnail rounded-circle", style: "width: 2.5rem", alt: "User profile picture") %>
+        <%= image_tag(liker.profile_photo.attached? ? liker.profile_photo : 'user_profile_picture.png', class: "img-thumbnail rounded-circle", style: "width: 2.5rem", alt: "User profile picture") %>
         <div class='d-flex flex-column mx-3 justify-content-center'>
             <small class='fw-bold' style='overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 10rem'>
-                <%= link_to liker, class: 'a-decoration-none',data: {turbo: false}  do %>
+                <%= link_to liker, class: 'a-decoration-none', data: { turbo: false } do %>
                     <%= liker.username %>
                 <% end %>
             </small>

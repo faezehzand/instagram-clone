@@ -1,15 +1,21 @@
 <% if notice && notice.is_a?(Array) %>
-    <% notice.each do |n| %>
-        <P class="alert alert-success"> <%= n %> </p>
-    <% end %>
+  <!-- Check if notice is present and is an array -->
+  <% notice.each do |n| %>
+    <p class="alert alert-success"> <%= n %> </p>
+    <!-- Iterate through each notice message and display it as a success alert -->
+  <% end %>
 <% elsif notice && notice.is_a?(String) %>
-    <P class="alert alert-success"> <%= notice %> </p>
+  <!-- If notice is a string, display it as a success alert -->
+  <p class="alert alert-success"> <%= notice %> </p>
 <% end %>
 
 <% if alert && alert.is_a?(Array) %>
-    <% alert.each do |n| %>
-        <P class="alert alert-danger"> <%= n %> </p>
-    <% end %>
+  <!-- Check if alert is present and is an array -->
+  <% alert.each do |n| %>
+    <p class="alert alert-danger"> <%= n %> </p>
+    <!-- Iterate through each alert message and display it as a danger alert -->
+  <% end %>
 <% elsif alert && alert.is_a?(String) %>
-    <P class="alert alert-success"> <%= alert %> </p>
+  <!-- If alert is a string, display it as a danger alert -->
+  <p class="alert alert-danger"> <%= alert %> </p>
 <% end %>

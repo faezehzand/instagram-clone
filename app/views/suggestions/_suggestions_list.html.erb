@@ -1,14 +1,18 @@
+<!-- Container for displaying user suggestions -->
 <div class='' style='width: 20rem'>
+    <!-- Header section with title and 'See All' link -->
     <div class='d-flex flex-row justify-content-between'>
-        <p class='text-muted fw-bold'>Suggestions For You</p>
+        <p class='text-muted fw-bold'>Suggestions For You</p> <!-- Title for the suggestions section -->
         <%= link_to root_path do %>
-            <small class='fw-bold '>See All</small>
+            <small class='fw-bold'>See All</small> <!-- Link to view all suggestions -->
         <% end %>
     </div>
 
+    <!-- Container for the list of suggestions -->
     <div class='d-flex flex-column'>
+        <!-- Iterate through each suggestion and render the corresponding partial -->
         <% suggestions.each do |suggestion| %>
-            <%= render 'suggestions/suggestion',suggestion: suggestion %>
+            <%= render 'suggestions/suggestion', suggestion: suggestion %> <!-- Render individual suggestion -->
         <% end %>
     </div>
 </div>

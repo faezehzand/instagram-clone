@@ -1,23 +1,35 @@
+<!-- Container for displaying user's posts -->
 <div class='container d-flex flex-column'>
+    <!-- Header section for the posts -->
     <div class='d-flex justify-content-center align-items-center'>
         <div class='w-content border-2 border-top border-dark'>
-            <i class='fa-solid fa-table-cells'></i>
-            <small>Posts</small>
+            <i class='fa-solid fa-table-cells'></i> <!-- Icon for visual indication -->
+            <small>Posts</small> <!-- Label for the section -->
         </div>
     </div>
+    
+    <!-- Row for containing all user posts -->
     <div class='row justify-content-center align-items-center'>
+        <!-- Loop through each post of the user -->
         <% user.posts.each do |post| %>
+            <!-- Column for each post with responsive sizing -->
             <div class='col-lg-4 col-md-6 col-sm-8 p-3 mb-4 profile-post' style='height:20rem; position:relative'>
-                <%= link_to post do  %>
+                <!-- Link to the individual post -->
+                <%= link_to post do %>
+                    <!-- Display the first image of the post -->
                     <%= image_tag post.images.first, class:'img-thumbnail', style:'width:100%;height:20rem;object-fit:cover' %>
+                    
+                    <!-- Overlay for likes and comments counts -->
                     <div class='d-flex align-items-center justify-content-center gap-1 w-100 profile-post-likes'>
-                        <i class='fa-solid fa-heart fa-xl text-white'></i>
-                        <small class='text-white fw-bold'><%= post.likes.count %></small>
-                        <i class='fa-regular fa-comment fa-xl fa-flip-horizontal text-white'></i>
-                        <small class='text-white fw-bold'><%= post.comments.count %></small>
+                        <i class='fa-solid fa-heart fa-xl text-white'></i> <!-- Heart icon for likes -->
+                        <small class='text-white fw-bold'><%= post.likes.count %></small> <!-- Display like count -->
+                        <i class='fa-regular fa-comment fa-xl fa-flip-horizontal text-white'></i> <!-- Comment icon -->
+                        <small class='text-white fw-bold'><%= post.comments.count %></small> <!-- Display comment count -->
                     </div>
+                    
+                    <!-- Indicator for posts with multiple images -->
                     <% if post.images.count > 1 %>
-                        <i class='fa-solid fa-images text-white multiple-images'></i>
+                        <i class='fa-solid fa-images text-white multiple-images'></i> <!-- Icon indicating multiple images -->
                     <% end %>
                 <% end %>
             </div>

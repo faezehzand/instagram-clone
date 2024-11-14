@@ -1,7 +1,12 @@
+<!-- Render the user's profile header -->
 <%= render 'users/profile_header', user: @user %>
 
+<!-- Check conditions for displaying user's posts -->
 <% if !@user.private || @user == current_user || current_user.followings.include?(@user) %>
+    <!-- If the user is not private, the current user is viewing their own profile, 
+         or the current user is following this user, render the user's posts -->
     <%= render 'users/profile_posts', user: @user %>
 <% else %>
+    <!-- If none of the above conditions are met, render the private account message -->
     <%= render 'users/profile_private' %>
 <% end %>
