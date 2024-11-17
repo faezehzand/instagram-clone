@@ -1,0 +1,18 @@
+<div id='post<%=comment.post_id%>ModalComment<%=comment.id%>'>
+    <div class='d-flex flex-row justify-content-between'>
+        <div class='d-flex flex-row mx-1'>
+            <%= image_tag(comment.user.profile_photo.attached? ? comment.user.profile_photo : 'user_profile_picture.png', class: "img-thumbnail rounded-circle", style: "width: 2.5rem;max-height: 2.5rem", alt: "User profile picture") %>
+            <div class='d-flex flex-column mx-3 justify-content-center'>
+                <small class='card-text m-0'><%= link_to comment.user, class: 'a-decoration-none',data: {turbo: false} do %><span class='fw-bold'><%= comment.user.username %></span><% end %></small>
+                <small> <%= comment.body %></small>
+                <small class='text-muted' > <%= time_ago_in_words(comment.created_at) %></small>
+            </div>
+        </div>
+        <% if comment.user==current_user%>
+            <%= button_to comment_path(id: comment.id), method: :delete, style: 'background:none; border:none', form: { data: { turbo_confirm: 'Are you sure?' } } do %>
+                <i class='fa fa-times'></i>
+            <% end %>
+        <% end %>
+        
+    </div>
+</div>

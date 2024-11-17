@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Instagram" %></title> <!-- Sets the page title, defaults to "Instagram" -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive design -->
+    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Allows the app to run in standalone mode on iOS -->
+    <%= csrf_meta_tags %> <!-- Protects against CSRF attacks -->
+    <%= csp_meta_tag %> <!-- Content Security Policy for enhanced security -->
+
+    <%= yield :head %> <!-- Placeholder for additional head content -->
+
+    <!-- Bootstrap CSS from CDN for responsive design -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Web App Manifest for Progressive Web App capabilities -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Favicon and apple-touch-icon for the app -->
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    
+    <!-- Link to application stylesheet -->
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    
+    <!-- Include JavaScript files defined in the import map -->
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if current_user %> <!-- Conditional rendering based on user authentication -->
+      <%= render 'layouts/navbar' %> <!-- Render the navigation bar if the user is logged in -->
+    <% end %>
+    
+    <%= yield %> <!-- Placeholder for the main content of the page -->
+  </body>
+</html>

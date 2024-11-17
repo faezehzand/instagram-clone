@@ -1,0 +1,24 @@
+<%= render "layouts/flash_messages" %>
+<!-- Render flash messages for user notifications (success, errors, etc.) -->
+
+<div class='d-flex my-5 justify-content-center gap-5'>
+  <!-- Main container to hold the stories and feeds, arranged in a flex layout for center alignment -->
+
+  <div class='d-flex flex-column gap-3'>
+    <!-- Column container for stories and feeds -->
+
+    <%= render 'story/stories_list' %>
+    <!-- Render a partial for the list of stories -->
+
+    <div class='d-flex flex-column '>
+      <!-- Column for displaying user posts -->
+      <% @feeds.each do |p| %>
+        <%= render 'posts/post', post: p %>
+        <!-- Render each individual post using the 'posts/post' partial -->
+      <% end %>
+    </div>
+  </div>
+
+  <%= render 'suggestions/suggestions_list', suggestions: @suggestions %>
+  <!-- Render a partial for suggestions, passing the @suggestions instance variable -->
+</div>
