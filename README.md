@@ -13,18 +13,29 @@ Setup Instructions:
 Prerequisites: Ensure the following are installed on your system: Docker Docker Compose
 
 Clone the Repository: Run the following commands in your terminal:
+
 git clone https://github.com/faezehzand/instagram-clone.git 
+
 cd instagram-clone
 
-Configure Environment Variables: Create a .env file in the root directory with the following content: POSTGRES_USER=postgres 
+Configure Environment Variables: Create a .env file in the root directory with the following 
+
+content: POSTGRES_USER=postgres 
+
 POSTGRES_PASSWORD=password 
+
 POSTGRES_DB=myapp_production 
+
 POSTGRES_HOST=db RAILS_ENV=production
 
 Build and Run the Application: Run the following command to set up and start the application: 
-docker-compose up --build This will: Build Docker containers for the application. Start the PostgreSQL database and the Rails web server.
+
+docker-compose up --build 
+
+This will: Build Docker containers for the application. Start the PostgreSQL database and the Rails web server.
 
 Database Setup: Open a separate terminal and run the following command to set up the database: 
+
 docker-compose run web rake db:create db:migrate
 
 Access the Application: Open your browser and visit: http://localhost:3000. Then you can make different user and test it.
