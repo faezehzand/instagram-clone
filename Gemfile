@@ -35,7 +35,7 @@ gem "bootsnap", require: false
 gem "bootstrap", "~> 5.3.0"
 gem "sassc-rails"
 gem "devise"
-gem "font-awesome-sass", "~> 6.1.2"
+gem "font-awesome-sass", "~> 6.7.2"
 gem "activestorage-validator"
 gem "pg"
 
